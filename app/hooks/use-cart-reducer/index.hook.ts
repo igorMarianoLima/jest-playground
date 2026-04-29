@@ -1,7 +1,7 @@
 import { useReducer } from "react";
 import type { ITShirt } from "~/types/products/t-shirt.type";
 
-type CartItem = ITShirt & { quantity: number };
+export type CartItem = ITShirt & { quantity: number };
 
 export interface CartState {
   items: Map<string, CartItem>;
