@@ -22,23 +22,23 @@ interface TShirtCardProps {
   onAddToCart: (item: ITShirt) => void;
 }
 
+export const colorLabels: Record<TShirtColor, string> = {
+  blue: "azul",
+  red: "vermelha",
+};
+
+export const sizeLabels: Record<TShirtSize, string> = {
+  g: "G",
+  m: "M",
+  p: "P",
+};
+
 export const TShirtCard: React.FC<TShirtCardProps> = ({ onAddToCart }) => {
   const [attributes, setAttributes] = useState<ITShirt>({
     title: "Camiseta",
     color: "blue",
     size: "p",
   });
-
-  const colorOptions: Record<TShirtColor, string> = {
-    blue: "azul",
-    red: "vermelha",
-  };
-
-  const sizeOptions: Record<TShirtSize, string> = {
-    g: "G",
-    m: "M",
-    p: "P",
-  };
 
   const handleChangeColor = (color: TShirtColor) => {
     setAttributes((prev) => ({
@@ -62,7 +62,7 @@ export const TShirtCard: React.FC<TShirtCardProps> = ({ onAddToCart }) => {
           <FormControl>
             <FormLabel>Cor</FormLabel>
             <RadioGroup>
-              {Object.entries(colorOptions).map(([color, label]) => (
+              {Object.entries(colorLabels).map(([color, label]) => (
                 <FormControlLabel
                   key={color}
                   checked={attributes.color === color}
@@ -78,7 +78,7 @@ export const TShirtCard: React.FC<TShirtCardProps> = ({ onAddToCart }) => {
           <FormControl>
             <FormLabel>Tamanho</FormLabel>
             <RadioGroup>
-              {Object.entries(sizeOptions).map(([size, label]) => (
+              {Object.entries(sizeLabels).map(([size, label]) => (
                 <FormControlLabel
                   key={size}
                   checked={attributes.size === size}
