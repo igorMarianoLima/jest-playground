@@ -3,7 +3,7 @@ import type { ITShirt } from "~/types/products/t-shirt.type";
 
 type CartItem = ITShirt & { quantity: number };
 
-interface CartState {
+export interface CartState {
   items: Map<string, CartItem>;
 }
 
@@ -23,7 +23,7 @@ const getTShirtKey = (item: ITShirt) => {
   return `${item.title}-${item.color}-${item.size}`;
 };
 
-const reducer = (state: CartState, action: CartAction): CartState => {
+export const reducer = (state: CartState, action: CartAction): CartState => {
   if (action.action === "add") {
     const tshirt = action.payload;
 

@@ -1,6 +1,6 @@
 import { Box, Stack, Typography } from "@mui/material";
 import { colorLabels, sizeLabels, TShirtCard } from "~/components/t-shirt-card";
-import { useCartReducerHook } from "~/hooks/use-cart-reducer.hook";
+import { useCartReducerHook } from "~/hooks/use-cart-reducer/index.hook";
 import type { ITShirt } from "~/types/products/t-shirt.type";
 
 export function Welcome() {
