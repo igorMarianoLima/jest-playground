@@ -47,6 +47,23 @@ export const reducer = (state: CartState, action: CartAction): CartState => {
     };
   }
 
+  if (action.action === "remove") {
+    const tshirt = action.payload;
+    const items = new Map(state.items);
+    const key = getTShirtKey(tshirt);
+
+    if (state.items.size > 1) {
+      items.delete(key);
+    } else {
+      items.set(key, { ...tshirt, quantity: 1 });
+    }
+
+    return {
+      ...state,
+      items,
+    };
+  }
+
   return state;
 };
 

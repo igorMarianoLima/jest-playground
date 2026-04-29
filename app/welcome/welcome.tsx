@@ -1,4 +1,4 @@
-import { Box, Stack, Typography } from "@mui/material";
+import { Box, Button, Stack, Typography } from "@mui/material";
 import { colorLabels, sizeLabels, TShirtCard } from "~/components/t-shirt-card";
 import { useCartReducerHook } from "~/hooks/use-cart-reducer/index.hook";
 import type { ITShirt } from "~/types/products/t-shirt.type";
@@ -9,6 +9,13 @@ export function Welcome() {
   const handleAddToCart = (item: ITShirt) => {
     dispatch({
       action: "add",
+      payload: item,
+    });
+  };
+
+  const handleRemoveFromCart = (item: ITShirt) => {
+    dispatch({
+      action: "remove",
       payload: item,
     });
   };
@@ -24,6 +31,10 @@ export function Welcome() {
               {item.quantity}x {item.title} {colorLabels[item.color]}{" "}
               {sizeLabels[item.size]}
             </Typography>
+
+            <Button size="small" onClick={() => handleRemoveFromCart(item)}>
+              Remover
+            </Button>
           </Box>
         ))}
       </Stack>
